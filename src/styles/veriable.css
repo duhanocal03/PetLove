@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Renk Paleti */
+    --color-primary: #F6B83D;
+    --color-primary-hover: #F9B020;
+    --color-primary-light: #FFF4DF;
+    --color-dark: #262626;
+    --color-dark-light: #4d4d4d;
+    --color-gray-bg: #f5f5f5;
+    --color-white: #ffffff;
+
+    /* Font Tanımı */
+    --font-main: 'Manrope', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-gray-bg);
+    color: var(--color-dark);
+    -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,59 @@
+@import "./veriable.css";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button{
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Login Page Button */
+
+.login-page-button{
+    width: 150px;
+    height: 50px;
+    color:var(--color-white) ;
+    background-color: var(--color-primary);
+    padding: 15px 35px;
+    border: 1px solid inherit;
+    border-radius: 30px;
+}
+
+.login-page-button:hover{
+    background-color: var(--color-primary-hover);
+}
+
+/* Main Page Button */
+.login-main-button{
+    width: 120px;
+    height: 50px;
+    padding: 15px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: inherit;
+    color: var(--color-white);
+}
+
+.login-main-button:hover{
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+/* Register Page Button */
+.register-page-button{
+    width: 150px;
+    height: 50px;
+    border: 1px solid var(--color-primary-light);
+    border-radius: 30px;
+    padding: 15px 20px;
+    color: var(--color-primary);
+}
+
+/* Main Page Button */
+.register-page-button:hover{
+    background-color: #FBE7C1;
+}

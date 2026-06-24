@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    background-blend-mode: overlay;
+    font-family: var(--font-main);
+}
+
+.mainWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.logoText {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: -1px;
+}
+
+.heart {
+    color: var(--color-primary);
+    /* Global CSS'teki sarı değişkenin */
+    margin: 0 2px;
+}
+
+.progressContainer {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.svgCircle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    /* İlerlemenin yukarıdan başlaması için */
+}
+
+.progressText {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-white);
+}
