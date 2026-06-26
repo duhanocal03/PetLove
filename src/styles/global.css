@@ -10,6 +10,7 @@ button{
     font-family: var(--font-main);
     cursor: pointer;
     transition: all 0.3s ease;
+    border: none;
 }
 
 /* Login Page Button */
@@ -20,7 +21,6 @@ button{
     color:var(--color-white) ;
     background-color: var(--color-primary);
     padding: 15px 35px;
-    border: 1px solid inherit;
     border-radius: 30px;
 }
 
@@ -33,7 +33,7 @@ button{
     width: 120px;
     height: 50px;
     padding: 15px 30px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+   
     background-color: inherit;
     color: var(--color-white);
 }

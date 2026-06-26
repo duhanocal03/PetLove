@@ -1,0 +1,52 @@
+.header {
+    width: 100%;
+    background-color: var(--color-gray-bg);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 64px;
+    /* Tasarımdaki gibi yanlardan geniş boşluk */
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 28px;
+    width: auto;
+}
+
+.menuLinks {
+    display: flex;
+    gap: 8px;
+    background-color: var(--color-white);
+    padding: 4px;
+    border-radius: 30px;
+    border: 1px solid rgba(38, 38, 38, 0.08);
+}
+
+.link {
+    text-decoration: none;
+    color: var(--color-dark);
+    font-weight: 500;
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+/* Aktif sayfa vurgusu */
+.activeLink {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.authButtons {
+    display: flex;
+    gap: 12px;
+}

@@ -1,0 +1,178 @@
+.pageContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    /* Tasarımdaki kırık beyaz tonu */
+    max-width: 1440px;
+    /* Sayfanın sağa sola aşırı yayılmasını önler */
+    margin: 0 auto;
+    /* Sayfayı büyük ekranlarda ortalar */
+    width: 100%;
+}
+
+.contentWrapper {
+    display: flex;
+    flex: 1;
+    padding: 0 32px 32px 32px;
+    gap: 32px;
+    align-items: stretch;
+    /* İki kolonun yüksekliğini eşitler */
+}
+
+.leftColumn {
+    flex: 1;
+    max-width: 600px;
+    /* Sol sarı alanın çok devasa olmasını engeller */
+    display: flex;
+}
+
+.rightColumn {
+    flex: 1.2;
+    /* Form alanına biraz daha ferah bir genişlik veriyoruz */
+    background-color: var(--color-white);
+    border-radius: 60px;
+    /* Tasarımdaki gibi çok daha yuvarlak köşeler */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.formContainer {
+    width: 100%;
+    max-width: 424px;
+    /* Form elemanlarının genişliği */
+}
+
+.formTitle {
+    font-size: 54px;
+    /* Tasarımdaki gibi büyük ve vurucu */
+    font-weight: 700;
+    color: #262626;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.formSubtitle {
+    font-size: 18px;
+    color: #262626;
+    opacity: 0.8;
+    line-height: 1.4;
+    margin-bottom: 40px;
+}
+
+.mainForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.inputWrapper {
+    position: relative;
+    /* Göz ikonunu içeride tutmak için şart */
+    width: 100%;
+}
+
+.inputField {
+    width: 100%;
+    padding: 18px 24px;
+    border: 1px solid rgba(38, 38, 38, 0.15);
+    border-radius: 30px;
+    font-family: var(--font-main);
+    font-size: 16px;
+    outline: none;
+    background-color: transparent;
+    transition: border-color 0.3s ease;
+}
+
+.inputField:focus {
+    border-color: var(--color-primary);
+}
+
+/* Göz İkonunun Tasarımdaki Gibi Tam İçeride Ortalanması */
+.eyeButton {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.eyeButton img {
+    width: 22px;
+    height: 22px;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 24px;
+    letter-spacing: 0.5px;
+}
+
+.switchPageText {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: rgba(38, 38, 38, 0.6);
+}
+
+.linkText {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.errorInput {
+    border-color: #EF2443 !important;
+    /* Tasarımdaki kırmızı tonu */
+}
+
+.successInput {
+    border-color: #08AA7C !important;
+    /* Tasarımdaki yeşil tonu */
+}
+
+.statusIcon {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    /* İnput padding'ine göre ortalama */
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    /* Tıklamayı engellemek için */
+}
+
+.statusIconWithEye {
+    position: absolute;
+    right: 56px;
+    /* Göz ikonuna çarpmaması için sola kaydırdık */
+    top: 24px;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+}
+
+.errorMessage {
+    color: #EF2443;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 16px;
+    font-weight: 500;
+    text-align: left;
+}

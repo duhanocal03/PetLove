@@ -14,7 +14,7 @@ const Loading = () => {
         }
         return prevProgress + 1;
       });
-    }, 30);
+    }, 15);
 
     return () => clearInterval(timer);
   }, []);
@@ -27,7 +27,7 @@ const Loading = () => {
       <div className={styles.mainWrapper}>
         <div className={styles.logoWrapper}>
           <h1 className={styles.logoText}>
-            petl<span className={styles.heart}>♥</span>ve
+            petl<span className={styles.heart}>💛</span>ve
           </h1>
         </div>
 

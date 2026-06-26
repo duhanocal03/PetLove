@@ -13,7 +13,7 @@ export default function App() {
     // Sayfa ilk yüklendiğinde simülasyon süresi (örn: 3 saniye) Loading ekranını aktif tutuyoruz.
     const timer = setTimeout(() => {
       setIsAppLoading(false);
-    }, 3200); // Loading sayfasındaki %100 olma süresine yakın bir değer
+    }, 1660); // Loading sayfasındaki %100 olma süresine yakın bir değer
 
     return () => clearTimeout(timer);
   }, []);
