@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import Navbar from '../../components/Navbar/Navbar';
 import AuthSection from '../../components/AuthSection/AuthSection';
-import styles from '../Register/Register.module.css';
+import styles from './Register.module.css';
 
-// Register için gerekli asset'ler (Dosya yollarını projene göre kontrol et)
-import catImg from '../../assets/Register_Cat.png'; // Sol taraftaki kedi resmi
-
+// Asset'ler
+import catImg from '../../assets/Register_Cat.png'; 
 import eyeIcon from '../../assets/eye.svg';
 import eyeOffIcon from '../../assets/eye-off.svg';
 import crossIcon from '../../assets/cross.svg'; 
@@ -23,8 +21,8 @@ const Register = () => {
   const validationSchema = Yup.object({
     name: Yup.string()
       .min(2, 'Name must be at least 2 characters')
-       .required('Name is required')
-      .matches(/^[a-zA-Z0-9]*$/, 'Password cannot contain special characters'),
+      .matches(/^[a-zA-Z0-9]*$/, 'Name cannot contain special characters')
+      .required('Name is required'),
     email: Yup.string()
       .matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Enter a valid Email')
       .required('Email is required'),
@@ -38,11 +36,15 @@ const Register = () => {
   });
 
   const formik = useFormik({
-    initialValues: { name: '', email: '', password: '' },
+    // initialValues içine confirmPassword alanı eklendi
+    initialValues: { name: '', email: '', password: '', confirmPassword: '' },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log('Kayıt İsteti Gönderiliyor:', values);
-      // Buraya daha sonra register thunk'ını bağlayacağız
+      // Backend'e göndermeden önce confirmPassword'ü ayırıyoruz
+      const { ...submitData } = values;
+      console.log('Kayıt İsteği Gönderiliyor :', submitData);
+      
+      // 🚀 Bir sonraki adımda buraya Redux dispatch'ini ekleyeceğiz.
     },
   });
 
@@ -58,9 +60,8 @@ const Register = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <Navbar />
-
       <div className={styles.contentWrapper}>
+        
         {/* Sol Taraf: Dinamik Kedi Alanı */}
         <div className={styles.leftColumn}>
           <AuthSection 
@@ -87,6 +88,7 @@ const Register = () => {
                 <input
                   type="text"
                   placeholder="Name"
+                  name="name"
                   className={getInputClass('name')}
                   {...formik.getFieldProps('name')}
                 />
@@ -106,6 +108,7 @@ const Register = () => {
                 <input
                   type="email"
                   placeholder="Email"
+                  name="email"
                   className={getInputClass('email')}
                   {...formik.getFieldProps('email')}
                 />
@@ -125,6 +128,7 @@ const Register = () => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   placeholder="Password"
+                  name="password"
                   className={getInputClass('password')}
                   {...formik.getFieldProps('password')}
                 />
@@ -146,11 +150,12 @@ const Register = () => {
                 )}
               </div>
 
-              {/* Confirm Password */}
+              {/* Confirm Password Input */}
               <div className={styles.inputWrapper}>
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
                   placeholder="Confirm password"
+                  name="confirmPassword"
                   className={getInputClass('confirmPassword')}
                   {...formik.getFieldProps('confirmPassword')}
                 />

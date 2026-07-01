@@ -1,66 +1,106 @@
-.header {
-    width: 100%;
-    background-color: var(--color-gray-bg);
-}
-
-.navbar {
+/* Ana Kapsayıcı - Elemanları merkeze topladık */
+.navbarContainer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 64px;
-    /* Tasarımdaki gibi yanlardan geniş boşluk */
+    justify-content: space-around;
+    align-items:center;
+    width: 100%;
+    padding: 24px 32px;
+    background-color: transparent;
 }
 
+/* Home sayfasındayken kenar boşluğunu sıfırla */
+.homeNavbar {
+    padding: 20px 0;
+}
+
+/* Logo Alanı - Orta menüye olan uzaklığı margin-right ile ayarlanıyor */
 .logoWrapper {
     display: flex;
     align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+    margin-right: 40px;
+    /* 👈 Logo ile orta menü arasındaki boşluk (İstediğin gibi ayarlayabilirsin) */
 }
 
-.logo {
+.logoImage {
     height: 28px;
     width: auto;
+    display: block;
 }
 
-.menuLinks {
+/* Orta Navigasyon Menüsü - Butonlar birbirine yakın */
+.navigationMenu {
     display: flex;
-    gap: 10px;
-    /* Elemanların arasındaki boşluk */
-    background-color: transparent;
-    /* Arka planı sıfırladık */
-    border: none;
-    padding: 0;
+    gap: 6px;
+    /* Linklerin kendi arasındaki mesafe */
+    align-items: center;
 }
 
-/* Her bir link artık kendi başına bağımsız bir kapsayıcı */
-.link {
-    text-decoration: none;
-    color: var(--color-dark);
-    font-weight: 500;
-    font-size: 15px;
-    padding: 12px 20px;
+.menuItem {
+    padding: 10px 16px;
     border-radius: 30px;
-    /* Oval görünüm */
+    font-size: 15px;
+    font-weight: 500;
+    color: #262626;
+    text-decoration: none;
     border: 1px solid rgba(38, 38, 38, 0.15);
-    /* Her birinin kendi border'ı */
-    background-color: var(--color-white);
-    /* Kutuların içi beyaz */
-    transition: all 0.3s ease;
-}
-
-.link:hover,
-.activeLink {
-    border-color: var(--color-primary);
     background-color: transparent;
-    color: var(--color-dark);
+    transition: all 0.2s ease;
 }
 
-/* Aktif sayfa vurgusu */
-.activeLink {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+/* Home sayfasındaki orta linklerin beyaz tasarımı */
+.homeMenuItem {
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
 }
 
-.authButtons {
+.homeMenuItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 🌟 AKTİF OLAN SAYFA LİNKİ */
+.activeMenuItem {
+    border: 1px solid #F6B83D !important;
+    color: #F6B83D !important;
+}
+
+.homeMenuItem.activeMenuItem {
+    border: 1px solid #FFFFFF !important;
+    color: #FFFFFF !important;
+}
+
+/* Sağ Bölüm - Orta menüye olan uzaklığı margin-left ile ayarlanıyor */
+.rightSection {
     display: flex;
-    gap: 12px;
+    align-items: center;
+    margin-left: 40px;
+    /* 👈 Giriş/Kayıt butonlarının orta menüye olan uzaklığı */
+}
+
+/* Profil Menüsü (Giriş yapıldığında) */
+.userProfileMenu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FFF4DF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileName {
+    font-weight: 500;
+    color: #262626;
+}
+
+.homeProfileName {
+    font-weight: 500;
+    color: #FFFFFF;
 }

@@ -1,0 +1,15 @@
+/* Ana sayfa sarmalayıcısı */
+.layoutContainer {
+    width: 100%;
+    min-height: 100vh;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sayfa içeriklerinin (Outlet) yerleştiği alan */
+.mainContent {
+    width: 100%;
+    flex: 1;
+    /* İçeriğin ekranı kaplamasını sağlar */
+}

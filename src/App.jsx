@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
-import NotFound from './pages/NotFound/NotFound';
+import Home from './pages/Home/Home'
 import Loading from './pages/Loading/Loading'; 
+import SharedLayout from './components/SharedLayout/SharedLayout';
+import { RestrictedRoute } from './routes/RestrictedRoute/RestrictedRoute';
+import { PrivateRoute } from './routes/PrivateRoute/PrivateRoute';
+import News from './pages/News/News';
+import Profile from './pages/Profile/Profile';
 
 export default function App() {
   const [isAppLoading, setIsAppLoading] = useState(true);
@@ -25,15 +29,36 @@ export default function App() {
 
   // 2. Durum: Yüklenme bittikten sonra normal route lar devreye girer
   return (
-    <Routes>
-      {/* Kök dizine gelen kullanıcıyı direkt login e yönlendiriyoruz */}
-      <Route path="/" element={<Navigate to="/login" />} />
-      
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/home" element={<Home />} />
-      
-      <Route path="*" element={<NotFound />} />
+  <Routes>
+      {/* 🌟 SHARED LAYOUT: Tüm sayfaların tepesinde ortak Navbar görünmesini sağlar */}
+      <Route path="/" element={<SharedLayout />}>
+        
+        {/* 🏠 Ana Giriş Sayfası (Kök Dizin) - Herkese Açık */}
+        <Route index element={<Home />} />
+
+        {/* 🟢 Genel Sayfalar (Public) - Herkese Açık */}
+        <Route path="news" element={<News />} />
+
+        {/* 🟡 Kısıtlı Sayfalar (Restricted) - Giriş yapanlar buraya girerse otomatik olarak içerideki bir sayfaya (örn: /news) şutlanır */}
+        <Route 
+          path="login" 
+          element={<RestrictedRoute component={Login} redirectTo="/news" />} 
+        />
+        <Route 
+          path="register" 
+          element={<RestrictedRoute component={Register} redirectTo="/news" />} 
+        />
+
+        {/* 🔴 Gizli/Özel Sayfalar (Private) - Giriş yapmayanlar buraya girmeye çalışırsa kapı dışarı edilip /login'e şutlanır */}
+        <Route 
+          path="profile" 
+          element={<PrivateRoute component={Profile} redirectTo="/login" />} 
+        />
+
+      </Route>
+
+      {/* Yanlış veya bilinmeyen bir link yazıldığında direkt Home sayfasına yönlendir */}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }

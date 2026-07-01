@@ -1,24 +1,21 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-import styles from '../Navbar/Navbar.module.css';
+import { Link } from 'react-router-dom';
+import styles from './AuthNav.module.css';
 
-const AuthNav = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
+const AuthNav = ({ isHome }) => {
   return (
-    <div className={styles.authButtons}>
-      <button 
-        className={location.pathname === '/login' ? 'login-page-button' : 'register-page-button'} 
-        onClick={() => navigate('/login')}
+    <div className={styles.authWrapper}>
+      <Link 
+        to="/login" 
+        className={`${styles.loginBtn} ${isHome ? styles.homeLoginBtn : ''}`}
       >
         LOG IN
-      </button>
-      <button 
-        className={location.pathname === '/register' ? 'login-page-button' : 'register-page-button'} 
-        onClick={() => navigate('/register')}
+      </Link>
+      <Link 
+        to="/register" 
+        className={`${styles.registerBtn} ${isHome ? styles.homeRegisterBtn : ''}`}
       >
         REGISTRATION
-      </button>
+      </Link>
     </div>
   );
 };

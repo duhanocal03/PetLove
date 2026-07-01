@@ -1,0 +1,71 @@
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    background-color: #F9F9F9;
+}
+
+.yellowCard {
+    background-color: #F6B83D;
+    border-radius: 60px;
+    padding: 32px 64px 96px 64px;
+    display: flex;
+    flex-direction: column;
+    /* İçerikleri alt alta dizer */
+    gap: 64px;
+    /* Navbar ile yazıların arasındaki dikey mesafe */
+}
+
+.navbarWrapper {
+    width: 100%;
+    /* Navbar'ın sarı kartın tamamına yayılmasını sağlar */
+}
+
+.mainContentRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.textSection {
+    max-width: 760px;
+}
+
+.mainTitle {
+    font-size: 90px;
+    font-weight: 700;
+    line-height: 1.0;
+    color: #FFFFFF;
+    margin: 0;
+    letter-spacing: -3px;
+}
+
+.lightText {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.subtitleSection {
+    max-width: 340px;
+}
+
+.subtitleText {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.imageWrapper {
+    width: 100%;
+    border-radius: 60px;
+    overflow: hidden;
+    height: 440px;
+}
+
+.heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
