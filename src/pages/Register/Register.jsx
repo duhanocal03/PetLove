@@ -17,6 +17,7 @@ import checkIcon from '../../assets/check.svg';
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // Kayıt formunun doğrulama kuralları
   const validationSchema = Yup.object({
@@ -31,6 +32,9 @@ const Register = () => {
       .matches(/^[a-zA-Z0-9]*$/, 'Password cannot contain special characters')
       .min(6, 'Password must be at least 6 characters')
       .required('Password is required'),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+      .required('Confirm password is required'),
   });
 
   const formik = useFormik({
@@ -139,6 +143,32 @@ const Register = () => {
                 )}
                 {formik.touched.password && formik.errors.password && (
                   <div className={styles.errorMessage}>{formik.errors.password}</div>
+                )}
+              </div>
+
+              {/* Confirm Password */}
+              <div className={styles.inputWrapper}>
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  placeholder="Confirm password"
+                  className={getInputClass('confirmPassword')}
+                  {...formik.getFieldProps('confirmPassword')}
+                />
+                <button
+                  type="button"
+                  className={styles.eyeButton}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  <img src={showConfirmPassword ? eyeIcon : eyeOffIcon} alt="Toggle Password" />
+                </button>
+                {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+                  <img src={crossIcon} alt="Error" className={styles.statusIconWithEye} />
+                )}
+                {formik.touched.confirmPassword && !formik.errors.confirmPassword && formik.values.confirmPassword !== '' && (
+                  <img src={checkIcon} alt="Success" className={styles.statusIconWithEye} />
+                )}
+                {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+                  <div className={styles.errorMessage}>{formik.errors.confirmPassword}</div>
                 )}
               </div>
 
