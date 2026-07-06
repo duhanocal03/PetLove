@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { refreshUser } from './redux/auth/operations';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
-import Home from './pages/Home/Home'
+import Home from './pages/Home/Home';
 import Loading from './pages/Loading/Loading'; 
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import { RestrictedRoute } from './routes/RestrictedRoute/RestrictedRoute';
@@ -11,35 +14,35 @@ import News from './pages/News/News';
 import Profile from './pages/Profile/Profile';
 
 export default function App() {
-  const [isAppLoading, setIsAppLoading] = useState(true);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector((state) => state.auth.isRefreshing);
+  const token = useSelector((state) => state.auth.token);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
 
   useEffect(() => {
-    // Sayfa ilk yüklendiğinde simülasyon süresi (örn: 3 saniye) Loading ekranını aktif tutuyoruz.
+    // Sadece localStorage'da token varsa refresh isteği at, yoksa döngüyü baştan engelle!
+    if (token) {
+      dispatch(refreshUser());
+    }
+
     const timer = setTimeout(() => {
-      setIsAppLoading(false);
-    }, 1660); // Loading sayfasındaki %100 olma süresine yakın bir değer
+      setIsInitialLoading(false);
+    }, 1660);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [dispatch]);
 
-  // 1. Durum: Uygulama ilk açılışta veya F5 anında direkt Loading gelir
-  if (isAppLoading) {
+  // Sadece aktif bir refresh işlemi varken render'ı kilitle
+  if (isRefreshing && isInitialLoading) {
     return <Loading />;
   }
 
-  // 2. Durum: Yüklenme bittikten sonra normal route lar devreye girer
   return (
-  <Routes>
-      {/* 🌟 SHARED LAYOUT: Tüm sayfaların tepesinde ortak Navbar görünmesini sağlar */}
+    <Routes>
       <Route path="/" element={<SharedLayout />}>
-        
-        {/* 🏠 Ana Giriş Sayfası (Kök Dizin) - Herkese Açık */}
         <Route index element={<Home />} />
-
-        {/* 🟢 Genel Sayfalar (Public) - Herkese Açık */}
         <Route path="news" element={<News />} />
-
-        {/* 🟡 Kısıtlı Sayfalar (Restricted) - Giriş yapanlar buraya girerse otomatik olarak içerideki bir sayfaya (örn: /news) şutlanır */}
+        
         <Route 
           path="login" 
           element={<RestrictedRoute component={Login} redirectTo="/news" />} 
@@ -48,16 +51,11 @@ export default function App() {
           path="register" 
           element={<RestrictedRoute component={Register} redirectTo="/news" />} 
         />
-
-        {/* 🔴 Gizli/Özel Sayfalar (Private) - Giriş yapmayanlar buraya girmeye çalışırsa kapı dışarı edilip /login'e şutlanır */}
         <Route 
           path="profile" 
           element={<PrivateRoute component={Profile} redirectTo="/login" />} 
         />
-
       </Route>
-
-      {/* Yanlış veya bilinmeyen bir link yazıldığında direkt Home sayfasına yönlendir */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

@@ -1,9 +1,13 @@
+import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-export const RestrictedRoute = ({ component: Component, redirectTo = '/news' }) => {
-  // Sadece test amaçlı elle değiştirilebilir sahte bir state:
-  // true yaparsan login/register'a girmeyi engeller, false yaparsan izin verir.
-  const isLoggedIn = false; 
+/**
+ * RestrictedRoute: Giriş yapmış kullanıcıların Login ve Register 
+ * sayfalarına tekrar erişmesini engeller ve onları ana akışa yönlendirir.
+ */
+export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  return isLoggedIn ? <Navigate to={redirectTo} /> : <Component />;
+  // 🟢 Kullanıcı giriş yaptıysa (veya yeni kayıt olduysa) direkt içeri fırlat!
+  return isLoggedIn ? <Navigate to={redirectTo} replace /> : <Component />;
 };

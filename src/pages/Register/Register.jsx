@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux'; // 🚀 Redux bağlantısı eklendi
 
+import { register } from '../../redux/auth/operations'; // 🚀 Path'i klasör yapına göre kontrol edebilirsin
 import AuthSection from '../../components/AuthSection/AuthSection';
 import styles from './Register.module.css';
 
@@ -14,6 +16,7 @@ import crossIcon from '../../assets/cross.svg';
 import checkIcon from '../../assets/check.svg'; 
 
 const Register = () => {
+  const dispatch = useDispatch(); // 🚀 Dispatch hook'u tanımlandı
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -27,7 +30,7 @@ const Register = () => {
       .matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Enter a valid Email')
       .required('Email is required'),
     password: Yup.string()
-      .matches(/^[a-zA-Z0-9]*$/, 'Password cannot contain special characters')
+      .matches(/^[a-zA-Z0-9-!-.]*$/, 'Password cannot contain special characters')
       .min(6, 'Password must be at least 6 characters')
       .required('Password is required'),
     confirmPassword: Yup.string()
@@ -36,15 +39,18 @@ const Register = () => {
   });
 
   const formik = useFormik({
-    // initialValues içine confirmPassword alanı eklendi
     initialValues: { name: '', email: '', password: '', confirmPassword: '' },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      // Backend'e göndermeden önce confirmPassword'ü ayırıyoruz
-      const { ...submitData } = values;
-      console.log('Kayıt İsteği Gönderiliyor :', submitData);
+    onSubmit: (values, actions) => {
+      // 1. Formik'in asenkron süreçte takılıp döngü yaratmasını engellemek için submit kilidini kaldırıyoruz
+      actions.setSubmitting(false);
+
+      // 2. Orijinal formu bozmadan bir kopyasını alıp confirmPassword'ü güvenle siliyoruz
+      const submitData = { ...values };
+      delete submitData.confirmPassword;
       
-      // 🚀 Bir sonraki adımda buraya Redux dispatch'ini ekleyeceğiz.
+      // 3. 🚀 Swagger API'ye kayıt isteğini tek bir kez tetikliyoruz
+      dispatch(register(submitData));
     },
   });
 

@@ -2,17 +2,19 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import Navbar from '../../components/Navbar/Navbar';
+import { useDispatch } from 'react-redux'; // 🚀 Redux dispatch hook'u eklendi
+import { logIn } from '../../redux/auth/operations'; // 🚀 Giriş operasyonu eklendi
+
 import AuthSection from '../../components/AuthSection/AuthSection';
 import styles from './Login.module.css';
 import dogImg from '../../assets/Login_Dog.png';
 import crossIcon from '../../assets/cross.svg';
-import checkIcon from '../../assets/check.svg'
+import checkIcon from '../../assets/check.svg';
 import eyeIcon from '../../assets/eye.svg';
 import eyeOffIcon from '../../assets/eye-off.svg';
 
 const Login = () => {
-  // Şifre görünürlüğü için state'i aktifleştirdik
+  const dispatch = useDispatch(); // 🚀 Dispatch'i aktifleştirdik
   const [showPassword, setShowPassword] = useState(false); 
 
   // Şifre doğrulama şeması
@@ -21,8 +23,7 @@ const Login = () => {
       .matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Enter a valid Email')
       .required('Email is required'),
     password: Yup.string()
-      // Şifrede özel karakter BULUNMAMASI için regex kuralı:
-      .matches(/^[a-zA-Z0-9]*$/, 'Password cannot contain special characters')
+      .matches(/^[a-zA-Z0-9-!-.]*$/, 'Password cannot contain special characters')
       .min(6, 'Password must be at least 6 characters')
       .required('Password is required'),
   });
@@ -31,7 +32,8 @@ const Login = () => {
     initialValues: { email: '', password: '' },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log('Giriş Başarılı:', values);
+      // 🟢 Eski console.log kaldırıldı, artık Redux üzerinden backend'e istek atılıyor!
+      dispatch(logIn(values));
     },
   });
 
@@ -48,8 +50,6 @@ const Login = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <Navbar />
-
       <div className={styles.contentWrapper}>
         <div className={styles.leftColumn}>
           <AuthSection 
@@ -109,7 +109,7 @@ const Login = () => {
                   <img src={showPassword ? eyeIcon : eyeOffIcon} alt="Toggle Password" />
                 </button>
 
-                {/* Şifre Hata / Başarı Durum İkonları (Göz ikonunun soluna kayması için CSS'te ayarladık) */}
+                {/* Şifre Hata / Başarı Durum İkonları */}
                 {formik.touched.password && formik.errors.password && (
                   <img src={crossIcon} alt="Error" className={styles.statusIconWithEye} />
                 )}
