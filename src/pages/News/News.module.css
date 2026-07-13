@@ -1,0 +1,214 @@
+.pageContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Üst Başlık ve Arama Alanı */
+.headerSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0;
+}
+
+.searchWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 260px;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 14px 44px 14px 20px;
+    font-size: 14px;
+    border: 1px solid rgba(17, 17, 17, 0.15);
+    border-radius: 30px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    color: #111111;
+}
+
+.searchInput:focus {
+    border-color: #fdb022;
+}
+
+.searchIcon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* Haber Grid Yapısı */
+.newsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 32px;
+    row-gap: 48px;
+    margin-bottom: 60px;
+}
+
+.newsCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 240px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.newsImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.newsCard:hover .newsImage {
+    transform: scale(1.03);
+}
+
+.cardTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.3;
+    margin: 0 0 14px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cardText {
+    font-size: 14px;
+    color: #2f2f2f;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.newsDate {
+    font-size: 14px;
+    color: rgba(17, 17, 17, 0.5);
+}
+
+.readMoreLink {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fdb022;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.readMoreLink:hover {
+    color: #e0961b;
+}
+
+/* Sayfalama (Pagination) Stilleri */
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.pageButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    background-color: transparent;
+    color: #111111;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pageButton:hover:not(:disabled) {
+    border-color: #fdb022;
+    color: #fdb022;
+}
+
+.activePageButton {
+    background-color: #fdb022;
+    border-color: #fdb022;
+    color: #ffffff;
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    color: rgba(17, 17, 17, 0.3);
+    font-size: 16px;
+}
+
+.pageButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 1024px) {
+    .newsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerSection {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .searchWrapper {
+        max-width: 100%;
+    }
+
+    .newsGrid {
+        grid-template-columns: 1fr;
+        row-gap: 36px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+}

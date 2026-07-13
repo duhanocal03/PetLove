@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { authReducer } from './slice';
+import { newsReducer } from '../news/slice';
 
 // Vite ortamında import hatalarını önlemek için tarayıcı API'sini doğrudan sarmallıyoruz
 const customLocalStorage = {
@@ -27,6 +28,7 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    news: newsReducer, // 🚀 newsReducer'ı doğrudan ekledik (persist etmeye gerek yok)
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
