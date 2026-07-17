@@ -8,6 +8,6 @@ import { Navigate } from 'react-router-dom';
 export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  // 🟢 Kullanıcı giriş yaptıysa (veya yeni kayıt olduysa) direkt içeri fırlat!
+  //  Kullanıcı giriş yaptıysa (veya yeni kayıt olduysa) direkt içeri fırlat
   return isLoggedIn ? <Navigate to={redirectTo} replace /> : <Component />;
 };

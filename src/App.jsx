@@ -12,6 +12,7 @@ import { RestrictedRoute } from './routes/RestrictedRoute/RestrictedRoute';
 import { PrivateRoute } from './routes/PrivateRoute/PrivateRoute';
 import News from './pages/News/News';
 import Profile from './pages/Profile/Profile';
+import FindPet from './pages/FindPet/FindPet'
 
 export default function App() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ export default function App() {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
         <Route path="news" element={<News />} />
-        
+        <Route path="find-pet" element={<FindPet />} />
         <Route 
           path="login" 
           element={<RestrictedRoute component={Login} redirectTo="/news" />} 

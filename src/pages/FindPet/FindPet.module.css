@@ -1,0 +1,319 @@
+/* Sayfa Ana Konteynerleri */
+.pageWrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fdfbf7;
+    padding: 40px 20px;
+    font-family: 'Manrope', 'Inter', sans-serif;
+}
+
+.pageContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 32px;
+}
+
+/* 📒 Filtreleme Paneli */
+.filterPanel {
+    background-color: #FFF4E5;
+    border-radius: 30px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+}
+
+/* 🚀 Filtre Satırı (5 Sütunlu Düzen) */
+.filterRow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    align-items: center;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.05);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+.searchWrapper,
+.customDropdown,
+.locationWrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Input ve Dropdown Stilleri */
+.inputFieldBox {
+    position: relative;
+    width: 100%;
+}
+
+.inputField {
+    width: 100%;
+    height: 48px;
+    padding: 14px 44px 14px 20px;
+    font-size: 14px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    color: #111111;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.inputFieldBoxActive .inputField {
+    box-shadow: 0 0 0 2px rgba(253, 176, 34, 0.3);
+}
+
+.inputActionGroup {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+}
+
+.clearBtn {
+    background: none;
+    border: none;
+    color: #888888;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.inputIconStatic {
+    color: #111111;
+}
+
+.starIcon{
+    width: 50px;
+    height: 50px;
+}
+
+/* Dropdown */
+.dropdownTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 30px;
+    height: 48px;
+    padding: 0 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    font-size: 14px;
+}
+
+.dropdownTriggerActive {
+    box-shadow: 0 0 0 2px rgba(253, 176, 34, 0.3);
+}
+
+.arrowIcon {
+    transition: transform 0.2s;
+}
+
+.arrowOpen {
+    transform: rotate(180deg);
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.08);
+    padding: 12px 0;
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdownItem {
+    padding: 10px 24px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.dropdownItem:hover {
+    background-color: #FFF4E5;
+    color: #fdb022;
+}
+
+.dropdownItemActive {
+    color: #fdb022;
+}
+
+/* Etiket Satırı */
+.tagRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tagButton {
+    background-color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.tagButtonActive {
+    background-color: #fdb022;
+    color: #ffffff;
+}
+
+/* 🐶 İlan Kartları */
+.petGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.petCard {
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 220px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.petImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.petName {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Özellikler Tablosu (5 Sütunlu) */
+.specTable {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.specItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.specLabel {
+    font-size: 10px;
+    color: #888888;
+    text-transform: uppercase;
+}
+
+.specValue {
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.cardActions {
+    display: flex;
+    gap: 12px;
+}
+
+.learnMoreBtn {
+    flex: 1;
+    background-color: #fdb022;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.favoriteBtn {
+    width: 48px;
+    height: 48px;
+    background-color: #FFF4E5;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Sayfalama */
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 48px;
+}
+
+.pageButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent;
+    cursor: pointer;
+}
+
+.activePageButton {
+    background-color: #fdb022;
+    color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+    .filterRow {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .petGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .filterRow {
+        grid-template-columns: 1fr;
+    }
+
+    .petGrid {
+        grid-template-columns: 1fr;
+    }
+}
