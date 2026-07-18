@@ -13,6 +13,7 @@ import { PrivateRoute } from './routes/PrivateRoute/PrivateRoute';
 import News from './pages/News/News';
 import Profile from './pages/Profile/Profile';
 import FindPet from './pages/FindPet/FindPet'
+import OurFriends from './pages/OurFriends/OurFriends';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -43,7 +44,8 @@ export default function App() {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
         <Route path="news" element={<News />} />
-        <Route path="find-pet" element={<FindPet />} />
+        <Route path="notices" element={<FindPet />} />
+        <Route path="friends" element={<OurFriends />} />
         <Route 
           path="login" 
           element={<RestrictedRoute component={Login} redirectTo="/news" />} 

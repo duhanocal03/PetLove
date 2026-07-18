@@ -27,7 +27,7 @@ const Navbar = () => {
       {/* 2. ORTA MENÜ */}
       <nav className={styles.navigationMenu}>
         <NavLink to="/news" className={getNavLinkClass}>News</NavLink>
-        <NavLink to="/find-pet" className={getNavLinkClass}>Find pet</NavLink>
+        <NavLink to="/notices" className={getNavLinkClass}>Find pet</NavLink>
         <NavLink to="/friends" className={getNavLinkClass}>Our friends</NavLink>
       </nav>
 
