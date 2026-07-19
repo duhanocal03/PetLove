@@ -39,7 +39,7 @@ const News = () => {
         );
       }
     } else {
-      // 2. Çoklu sayfalarda aktif sayfanın etrafındaki dinamik pencereleri hesapla
+      // Çoklu sayfalarda aktif sayfanın etrafındaki dinamik pencereleri hesapla
       let startPage = Math.max(1, currentPage - 1);
       let endPage = Math.min(totalPages, currentPage + 1);
 

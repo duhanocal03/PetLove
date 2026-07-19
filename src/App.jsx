@@ -32,7 +32,7 @@ export default function App() {
     }, 1660);
 
     return () => clearTimeout(timer);
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   // Sadece aktif bir refresh işlemi varken render'ı kilitle
   if (isRefreshing && isInitialLoading) {

@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux'; // 🚀 Redux bağlantısı eklendi
+import { useDispatch } from 'react-redux';
 
-import { register } from '../../redux/auth/operations'; // 🚀 Path'i klasör yapına göre kontrol edebilirsin
+import { register } from '../../redux/auth/operations'; 
 import AuthSection from '../../components/AuthSection/AuthSection';
 import styles from './Register.module.css';
 
@@ -16,7 +16,7 @@ import crossIcon from '../../assets/cross.svg';
 import checkIcon from '../../assets/check.svg'; 
 
 const Register = () => {
-  const dispatch = useDispatch(); // 🚀 Dispatch hook'u tanımlandı
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -42,14 +42,14 @@ const Register = () => {
     initialValues: { name: '', email: '', password: '', confirmPassword: '' },
     validationSchema: validationSchema,
     onSubmit: (values, actions) => {
-      // 1. Formik'in asenkron süreçte takılıp döngü yaratmasını engellemek için submit kilidini kaldırıyoruz
+      // Formik'in asenkron süreçte takılıp döngü yaratmasını engellemek için submit kilidini kaldırıyoruz
       actions.setSubmitting(false);
 
-      // 2. Orijinal formu bozmadan bir kopyasını alıp confirmPassword'ü güvenle siliyoruz
+      // Orijinal formu bozmadan bir kopyasını alıp confirmPassword'ü güvenle siliyoruz
       const submitData = { ...values };
       delete submitData.confirmPassword;
       
-      // 3. 🚀 Swagger API'ye kayıt isteğini tek bir kez tetikliyoruz
+      // Swagger API'ye kayıt isteğini tek bir kez tetikliyoruz
       dispatch(register(submitData));
     },
   });

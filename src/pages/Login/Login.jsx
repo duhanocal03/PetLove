@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux'; // 🚀 Redux dispatch hook'u eklendi
-import { logIn } from '../../redux/auth/operations'; // 🚀 Giriş operasyonu eklendi
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../redux/auth/operations'; 
 
 import AuthSection from '../../components/AuthSection/AuthSection';
 import styles from './Login.module.css';
@@ -14,7 +14,7 @@ import eyeIcon from '../../assets/eye.svg';
 import eyeOffIcon from '../../assets/eye-off.svg';
 
 const Login = () => {
-  const dispatch = useDispatch(); // 🚀 Dispatch'i aktifleştirdik
+  const dispatch = useDispatch(); 
   const [showPassword, setShowPassword] = useState(false); 
 
   // Şifre doğrulama şeması
@@ -32,7 +32,6 @@ const Login = () => {
     initialValues: { email: '', password: '' },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      // 🟢 Eski console.log kaldırıldı, artık Redux üzerinden backend'e istek atılıyor!
       dispatch(logIn(values));
     },
   });

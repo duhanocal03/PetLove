@@ -5,10 +5,10 @@ import homeHeroImg from '../../assets/Home_Banner.png';
 const Home = () => {
   return (
     <div className={styles.homeContainer}>
-      {/* 🟡 BÜYÜK SARI KART */}
+      {/* BÜYÜK SARI KART */}
       <div className={styles.yellowCard}>
         
-        {/* 👉 NAVBAR BURADA EN TEPEDE DURACAK */}
+        {/*  NAVBAR */}
         <div className={styles.navbarWrapper}>
           <Navbar />
         </div>
@@ -30,7 +30,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* 🖼️ ALT KISIMDAKİ BÜYÜK GÖRSEL */}
+      {/* BÜYÜK GÖRSEL */}
       <div className={styles.imageWrapper}>
         <img src={homeHeroImg} alt="Woman with dog" className={styles.heroImage} />
       </div>
