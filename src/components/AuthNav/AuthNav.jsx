@@ -1,34 +1,45 @@
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'; // 🚀 Redux bağlantıları ekalndi
-import { logOut } from '../../redux/auth/operations'; // 🚀 Path'i kontrol edersin
+import { useSelector, useDispatch } from 'react-redux';
+import { logOut } from '../../redux/auth/operations'; 
+import { FaUser } from 'react-icons/fa'; 
 import styles from './AuthNav.module.css';
 
 const AuthNav = ({ isHome }) => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn); // Kullanıcı giriş durumunu çek
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const user = useSelector((state) => state.auth.user);
 
-  // 🟢 Eğer kullanıcı giriş yapmışsa, butonlar yerine profil linki ve çıkış butonu göster
   if (isLoggedIn) {
     return (
       <div className={styles.authWrapper}>
-        <Link 
-          to="/profile" 
-          className={`${styles.loginBtn} ${isHome ? styles.homeLoginBtn : ''}`}
-        >
-          MY PROFILE
-        </Link>
-        <button 
+
+      <button 
           type="button"
           onClick={() => dispatch(logOut())}
           className={`${styles.registerBtn} ${isHome ? styles.homeRegisterBtn : ''}`}
         >
           LOG OUT
         </button>
+
+        <Link 
+          to="/profile" 
+          className={styles.userProfileLink}
+        >
+          <div className={styles.avatar}>
+            {user?.avatar ? (
+              <img src={user.avatar} alt={user?.name || 'User'} className={styles.avatarImg} />
+            ) : (
+              <FaUser />
+            )}
+          </div>
+          <span className={`${styles.userName} ${isHome ? styles.homeUserName : ''}`}>
+            {user?.name || 'User'}
+          </span>
+        </Link>
       </div>
     );
   }
 
-  // 🔴 Kullanıcı giriş yapmamışsa eski butonları göstermeye devam et
   return (
     <div className={styles.authWrapper}>
       <Link 

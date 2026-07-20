@@ -45,3 +45,48 @@
 .registerBtn:hover {
     opacity: 0.9;
 }
+
+.userProfileLink {
+    display: flex;
+    align-items: center;
+    /* Öğeleri dikeyde ortalar */
+    gap: 12px;
+    /* Avatar ile isim arasındaki boşluk */
+    text-decoration: none;
+    cursor: pointer;
+    flex-direction: row;
+    /* Kesin olarak yan yana olmasını sağlar */
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #FFF4C1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F59256;
+    font-size: 18px;
+    overflow: hidden;
+    flex-shrink: 0;
+    /* Ekran daralsa bile avatarın büzüşmesini engeller */
+}
+
+.avatarImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.userName {
+    font-weight: 600;
+    font-size: 16px;
+    color: #111111;
+    white-space: nowrap;
+    text-transform: capitalize;
+}
+
+.homeUserName {
+    color: #ffffff;
+}
