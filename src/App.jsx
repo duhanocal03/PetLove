@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { refreshUser } from './redux/auth/operations';
@@ -14,6 +14,8 @@ import News from './pages/News/News';
 import Profile from './pages/Profile/Profile';
 import FindPet from './pages/FindPet/FindPet'
 import OurFriends from './pages/OurFriends/OurFriends';
+import AddPet from './pages/AddPet/AddPet';
+import NotFound from './pages/NotFound/NotFound';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -58,8 +60,14 @@ export default function App() {
           path="profile" 
           element={<PrivateRoute component={Profile} redirectTo="/login" />} 
         />
+        <Route 
+          path="add-pet" 
+          element={<PrivateRoute component={AddPet} redirectTo="/login" />} 
+        />
+
+        <Route path="*" element={<NotFound/>} />
       </Route>
-      <Route path="*" element={<Navigate to="/" />} />
+      
     </Routes>
   );
 }

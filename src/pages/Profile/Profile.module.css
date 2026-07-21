@@ -1,0 +1,635 @@
+/* ==========================================
+   GENEL KONTEYNER & DESKTOP (>= 1280px)
+   ========================================== */
+.profileContainer {
+    display: flex;
+    gap: 32px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.userCard {
+    position: relative;
+    width: 380px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 40px 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.userBadge {
+    position: absolute;
+    top: 30px;
+    left: 28px;
+    background-color: #fdb022;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 18px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.topEditBtn {
+    position: absolute;
+    top: 30px;
+    right: 28px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff9ed;
+    border: none;
+    color: #fdb022;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.topEditBtn:hover {
+    background-color: #fdb022;
+    color: #ffffff;
+}
+
+.avatarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 24px;
+}
+
+.avatarWrapper {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff4d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.avatarImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.defaultAvatarIcon {
+    font-size: 48px;
+    color: #fdb022;
+}
+
+.uploadLabel {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #2b2b2b;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.cameraIcon {
+    color: #fdb022;
+}
+
+.fileInput {
+    display: none;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2b2b2b;
+    margin-bottom: 4px;
+}
+
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    padding: 14px 44px 14px 18px;
+    border: 1px solid #fdb02250;
+    border-radius: 30px;
+    font-size: 14px;
+    outline: none;
+    background-color: transparent;
+    color: #2b2b2b;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    border-color: #fdb022;
+}
+
+.editIcon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fdb022;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.myPetsSection {
+    margin-bottom: 24px;
+}
+
+.myPetsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.myPetsTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2b2b2b;
+}
+
+.addPetBtn {
+    background-color: #fdb022;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.addPetBtn:hover {
+    background-color: #e59d1b;
+}
+
+.myPetsListContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.myPetCard {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 38px 12px 8px;
+    border: 1px solid #f3f3f3;
+    border-radius: 20px;
+    background-color: #ffffff;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.myPetImg {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.myPetInfoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+}
+
+.myPetCardTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111111;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.myPetDetailsGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.myPetDetailItem {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: max-content;
+}
+
+.myPetLabel {
+    font-size: 10px;
+    color: #8a8a8a;
+    line-height: 1.2;
+}
+
+.mypetValue {
+    font-size: 11px;
+    font-weight: 500;
+    color: #111111;
+    text-transform: capitalize;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.myPetDeleteBtn {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    right: 8px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #FFF4DF;
+    color: #F6B83D;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.myPetDeleteBtn:hover {
+    background-color: #fde8c3;
+}
+
+.myPetsEmptyText {
+    font-size: 14px;
+    color: #8e8e8e;
+    text-align: center;
+    padding: 20px;
+}
+
+.logoutBtn {
+    width: 136px;
+    height: 50px;
+    background-color: #fff4d9;
+    color: #fdb022;
+    border: none;
+    border-radius: 30px;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    margin-top: auto;
+}
+
+.logoutBtn:hover {
+    background-color: #fdb022;
+    color: #ffffff;
+}
+
+.contentSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.tabsHeader {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.tabBtn {
+    background-color: #fff4d9;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2b2b2b;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.activeTab {
+    background-color: #fdb022;
+    color: #ffffff;
+}
+
+.petsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.petCard {
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.cardImageContainer {
+    position: relative;
+    height: 220px;
+}
+
+.petImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.categoryBadge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background-color: #fff4d9;
+    color: #2b2b2b;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.ratingBadge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: #fff4d9;
+    color: #2b2b2b;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.starIcon {
+    color: #fdb022;
+}
+
+.cardBody {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.petTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2b2b2b;
+    margin-bottom: 12px;
+}
+
+.petDetailsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 16px;
+    margin-bottom: 14px;
+}
+
+.petDetailsGrid span {
+    font-size: 11px;
+    color: #888888;
+}
+
+.petDetailsGrid p {
+    font-size: 13px;
+    font-weight: 500;
+    color: #2b2b2b;
+}
+
+.petDescription {
+    font-size: 13px;
+    color: #555555;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cardFooter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.petPrice {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2b2b2b;
+}
+
+.learnMoreBtn {
+    flex: 1;
+    background-color: #fff4d9;
+    color: #fdb022;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.learnMoreBtn:hover {
+    background-color: #fdb022;
+    color: #ffffff;
+}
+
+.deleteCardBtn,
+.favoriteBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff4d9;
+    color: #fdb022;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.deleteCardBtn:hover,
+.favoriteBtn:hover {
+    background-color: #fdb022;
+    color: #ffffff;
+}
+
+.favoriteActive {
+    background-color: #fdb022;
+}
+
+.emptyState {
+    grid-column: span 2;
+    text-align: center;
+    padding: 40px;
+    color: black;
+    font-size: 16px;
+}
+
+.emptySpan {
+    color: #F6B83D;
+}
+
+
+/* ==========================================
+   TABLET BÖLÜMÜ (768px - 1279px)
+   ========================================== */
+@media screen and (max-width: 1279px) {
+    .profileContainer {
+        flex-direction: column;
+        padding: 32px 32px;
+        gap: 32px;
+    }
+
+    .userCard {
+        width: 100%;
+        padding: 32px 28px;
+    }
+
+    .myPetCard {
+        padding: 12px 48px 12px 12px;
+    }
+
+    .myPetDetailsGrid {
+        gap: 16px;
+    }
+
+    .petsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ==========================================
+   MOBİL BÖLÜMÜ (< 768px)
+   ========================================== */
+@media screen and (max-width: 767px) {
+    .profileContainer {
+        padding: 20px 16px;
+        gap: 20px;
+    }
+
+    .userCard {
+        width: 100%;
+        border-radius: 20px;
+        padding: 24px 16px;
+    }
+
+    .userBadge {
+        top: 20px;
+        left: 16px;
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+
+    .topEditBtn {
+        top: 20px;
+        right: 16px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .avatarContainer {
+        margin-top: 24px;
+        margin-bottom: 20px;
+    }
+
+    .avatarWrapper {
+        width: 80px;
+        height: 80px;
+    }
+
+    .label {
+        font-size: 16px;
+    }
+
+    .input {
+        padding: 12px 40px 12px 14px;
+        font-size: 13px;
+    }
+
+    .tabsHeader {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .tabBtn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .petsGrid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .emptyState {
+        grid-column: span 1;
+        padding: 20px 10px;
+    }
+
+    .myPetCard {
+        padding: 12px 36px 12px 8px;
+    }
+
+    .myPetDetailsGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px 10px;
+    }
+
+    .myPetDetailItem {
+        min-width: auto;
+    }
+
+    .myPetDeleteBtn {
+        right: 6px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .logoutBtn {
+        width: 100%;
+        height: 46px;
+    }
+}

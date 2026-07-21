@@ -1,7 +1,14 @@
 import styles from './PetDetailsModal.module.css';
 
-const PetDetailsModal = ({ pet, onClose }) => {
+const PetDetailsModal = ({ pet, onClose, onToggleFavorite, favoriteIds = [] }) => {
   if (!pet) return null;
+
+  const petId = pet._id || pet.id;
+  
+  // Bu hayvanın favorilerde olup olmadığını kontrol ediyoruz
+  const isFavorite = favoriteIds.some(
+    (fav) => String(fav?._id || fav?.id || fav) === String(petId)
+  );
 
   return (
     <div className={styles.backdrop} onClick={onClose}>
@@ -9,7 +16,7 @@ const PetDetailsModal = ({ pet, onClose }) => {
         <button className={styles.closeBtn} onClick={onClose}>&times;</button>
         
         <div className={styles.imageWrapper}>
-          <img src={pet.imgURL} alt={pet.title} className={styles.petImage} />
+          <img src={pet.imgURL || pet.imgUrl || pet.imageUrl} alt={pet.title} className={styles.petImage} />
           <div className={styles.sellBadge}>{pet.category || 'Sell'}</div>
         </div>
 
@@ -34,7 +41,13 @@ const PetDetailsModal = ({ pet, onClose }) => {
         <p className={styles.price}>{pet.price ? `$${pet.price}` : '$257.99'}</p>
 
         <div className={styles.actions}>
-          <button className={styles.addBtn}>Add to &hearts;</button>
+          <button 
+            type="button" 
+            className={styles.addBtn}
+            onClick={() => onToggleFavorite && onToggleFavorite(petId)}
+          >
+            {isFavorite ? 'Remove from' : 'Add to'} &hearts;
+          </button>
           <button className={styles.contactBtn}>Contact</button>
         </div>
       </div>

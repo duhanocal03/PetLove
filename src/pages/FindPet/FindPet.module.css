@@ -19,7 +19,6 @@
     margin-bottom: 32px;
 }
 
-/* 📒 Filtreleme Paneli */
 .filterPanel {
     background-color: #FFF4E5;
     border-radius: 30px;
@@ -27,7 +26,6 @@
     margin-bottom: 40px;
 }
 
-/* 🚀 Filtre Satırı (5 Sütunlu Düzen) */
 .filterRow {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -45,7 +43,6 @@
     width: 100%;
 }
 
-/* Input ve Dropdown Stilleri */
 .inputFieldBox {
     position: relative;
     width: 100%;
@@ -98,7 +95,6 @@
     height: 50px;
 }
 
-/* Dropdown */
 .dropdownTrigger {
     display: flex;
     align-items: center;
@@ -153,7 +149,6 @@
     color: #fdb022;
 }
 
-/* Etiket Satırı */
 .tagRow {
     display: flex;
     flex-wrap: wrap;
@@ -174,7 +169,6 @@
     color: #ffffff;
 }
 
-/* 🐶 İlan Kartları */
 .petGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -214,7 +208,6 @@
     margin: 0;
 }
 
-/* Özellikler Tablosu (5 Sütunlu) */
 .specTable {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -276,7 +269,6 @@
     cursor: pointer;
 }
 
-/* Sayfalama */
 .paginationContainer {
     display: flex;
     justify-content: center;

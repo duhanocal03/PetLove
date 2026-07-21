@@ -45,11 +45,9 @@ const Register = () => {
       // Formik'in asenkron süreçte takılıp döngü yaratmasını engellemek için submit kilidini kaldırıyoruz
       actions.setSubmitting(false);
 
-      // Orijinal formu bozmadan bir kopyasını alıp confirmPassword'ü güvenle siliyoruz
       const submitData = { ...values };
       delete submitData.confirmPassword;
       
-      // Swagger API'ye kayıt isteğini tek bir kez tetikliyoruz
       dispatch(register(submitData));
     },
   });
@@ -68,7 +66,6 @@ const Register = () => {
     <div className={styles.pageContainer}>
       <div className={styles.contentWrapper}>
         
-        {/* Sol Taraf: Dinamik Kedi Alanı */}
         <div className={styles.leftColumn}>
           <AuthSection 
             image={catImg}

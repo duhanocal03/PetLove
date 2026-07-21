@@ -1,0 +1,99 @@
+.modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #111;
+}
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    background-color: #fef6e4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.catEmoji {
+    font-size: 36px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2b2b2b;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.yesBtn {
+    flex: 1;
+    background-color: #fdb022;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.yesBtn:hover {
+    background-color: #e59d1b;
+}
+
+.cancelBtn {
+    flex: 1;
+    background-color: #f3f3f3;
+    color: #2b2b2b;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cancelBtn:hover {
+    background-color: #e5e5e5;
+}

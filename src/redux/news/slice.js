@@ -17,7 +17,6 @@ const newsSlice = createSlice({
       })
       .addCase(fetchNews.fulfilled, (state, action) => {
         state.isLoading = false;
-        // Backend yapısına göre action.payload veya action.payload.results olabilir Swagger a göre kontrol edilebilir
         state.items = action.payload?.results || action.payload || [];
         state.totalPages = action.payload?.totalPages || 1;
       })

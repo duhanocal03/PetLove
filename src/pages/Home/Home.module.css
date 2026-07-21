@@ -11,14 +11,11 @@
     padding: 32px 64px 96px 64px;
     display: flex;
     flex-direction: column;
-    /* İçerikleri alt alta dizer */
     gap: 64px;
-    /* Navbar ile yazıların arasındaki dikey mesafe */
 }
 
 .navbarWrapper {
     width: 100%;
-    /* Navbar'ın sarı kartın tamamına yayılmasını sağlar */
 }
 
 .mainContentRow {

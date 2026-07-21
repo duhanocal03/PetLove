@@ -3,11 +3,8 @@
     display: flex;
     flex-direction: column;
     background-color: #f9f9f9;
-    /* Tasarımdaki kırık beyaz tonu */
     max-width: 1440px;
-    /* Sayfanın sağa sola aşırı yayılmasını önler */
     margin: 0 auto;
-    /* Sayfayı büyük ekranlarda ortalar */
     width: 100%;
 }
 
@@ -17,22 +14,18 @@
     padding: 0 32px 32px 32px;
     gap: 32px;
     align-items: stretch;
-    /* İki kolonun yüksekliğini eşitler */
 }
 
 .leftColumn {
     flex: 1;
     max-width: 600px;
-    /* Sol sarı alanın çok devasa olmasını engeller */
     display: flex;
 }
 
 .rightColumn {
     flex: 1.2;
-    /* Form alanına biraz daha ferah bir genişlik veriyoruz */
     background-color: var(--color-white);
     border-radius: 60px;
-    /* Tasarımdaki gibi çok daha yuvarlak köşeler */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,12 +35,10 @@
 .formContainer {
     width: 100%;
     max-width: 424px;
-    /* Form elemanlarının genişliği */
 }
 
 .formTitle {
     font-size: 54px;
-    /* Tasarımdaki gibi büyük ve vurucu */
     font-weight: 700;
     color: #262626;
     margin-bottom: 16px;
@@ -70,7 +61,6 @@
 
 .inputWrapper {
     position: relative;
-    /* Göz ikonunu içeride tutmak için şart */
     width: 100%;
 }
 
@@ -90,7 +80,6 @@
     border-color: var(--color-primary);
 }
 
-/* Göz İkonunun Tasarımdaki Gibi Tam İçeride Ortalanması */
 .eyeButton {
     position: absolute;
     right: 24px;
@@ -138,29 +127,24 @@
 
 .errorInput {
     border-color: #EF2443 !important;
-    /* Tasarımdaki kırmızı tonu */
 }
 
 .successInput {
     border-color: #08AA7C !important;
-    /* Tasarımdaki yeşil tonu */
 }
 
 .statusIcon {
     position: absolute;
     right: 24px;
     top: 24px;
-    /* İnput padding'ine göre ortalama */
     width: 18px;
     height: 18px;
     pointer-events: none;
-    /* Tıklamayı engellemek için */
 }
 
 .statusIconWithEye {
     position: absolute;
     right: 56px;
-    /* Göz ikonuna çarpmaması için sola kaydırdık */
     top: 24px;
     width: 18px;
     height: 18px;

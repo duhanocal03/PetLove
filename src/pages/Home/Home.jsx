@@ -5,10 +5,8 @@ import homeHeroImg from '../../assets/Home_Banner.png';
 const Home = () => {
   return (
     <div className={styles.homeContainer}>
-      {/* BÜYÜK SARI KART */}
       <div className={styles.yellowCard}>
         
-        {/*  NAVBAR */}
         <div className={styles.navbarWrapper}>
           <Navbar />
         </div>

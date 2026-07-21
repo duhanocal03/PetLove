@@ -1,12 +1,17 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { fetchNotices } from '../../redux/notices/operations';
+import { fetchNotices, addFavorite, removeFavorite } from '../../redux/notices/operations';
+import { refreshUser } from '../../redux/auth/operations';
 import styles from './FindPet.module.css';
 import heartIcon from '../../assets/Heart.svg';
 import starIcon from '../../assets/star.png';
 import PetDetailsModal from '../../components/PetDetailsModal/PetDetailsModal';
 import AuthAttentionModal from '../../components/AuthAttentionModal/AuthAttentionModal';
+import CongratsModal from '../../components/CongratsModal/CongratsModal';
+
+// Redux selektör uyarılarını önlemek için sabit boş dizi referansı
+const EMPTY_ARRAY = [];
 
 // yedek resim 
 const FALLBACK_IMAGE = 'https://placehold.co/340x200/FFF9F0/fdb022?text=No+Image';
@@ -15,13 +20,20 @@ const FALLBACK_CATEGORIES = ['young', 'old', 'lost', 'found', 'good-hands'];
 const FALLBACK_GENDERS = ['female', 'male', 'multiple'];
 const FALLBACK_SPECIES = ['dog', 'cat', 'monkey', 'bird', 'snake'];
 
-
 const FindPet = () => {
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false); // Modalın açık olup olmadığını tutar
-const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isCongratsModalOpen, setIsCongratsModalOpen] = useState(false);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  
+  // Sabit EMPTY_ARRAY referansı kullanılarak konsol uyarıları engellendi
+  const favoriteIds = useSelector((state) => 
+    state.auth.user?.noticesFavorites || state.auth.user?.favorites || EMPTY_ARRAY
+  );
+  
   const dispatch = useDispatch();
-const [selectedPet, setSelectedPet] = useState(null);
-  //  Redux'tan gelen tüm veriler 
+  const [selectedPet, setSelectedPet] = useState(null);
+  
+  // Redux'tan gelen tüm veriler 
   const { 
     items: notices, 
     totalPages, 
@@ -113,7 +125,7 @@ const [selectedPet, setSelectedPet] = useState(null);
 
   const handleFilterChange = (setter, value) => {
     setter(value);
-    setCurrentPage(1); // Filtre değiştiğinde 1. sayfaya sıfırla
+    setCurrentPage(1);
     setOpenDropdown(null);
   };
 
@@ -123,6 +135,48 @@ const [selectedPet, setSelectedPet] = useState(null);
     } else {
       action();
     }
+  };
+
+  // Favori Ekleme/Çıkarma İşlemi
+  const handleToggleFavorite = (petId) => {
+    handleProtectedAction(async () => {
+      const petIdString = String(petId);
+      const isAlreadyFavorite = favoriteIds.some((fav) => String(fav?._id || fav?.id || fav) === petIdString);
+
+      if (isAlreadyFavorite) {
+        await dispatch(removeFavorite(petId));
+      } else {
+        const wasEmpty = favoriteIds.length === 0;
+        await dispatch(addFavorite(petId));
+
+        if (wasEmpty && !window.hasShownCongratsThisSession) {
+          setIsCongratsModalOpen(true);
+          window.hasShownCongratsThisSession = true;
+        }
+      }
+      
+      dispatch(refreshUser());
+    });
+  };
+
+  // İlan detayını açma ve Görüntülenenlere (Viewed) kaydetme
+  const handleOpenDetails = (pet) => {
+    setSelectedPet(pet);
+    
+    const petId = pet._id || pet.id;
+    if (!petId) return;
+
+    // localStorage'dan mevcut görüntülenen ilanları alıyoruz
+    const storedViewed = JSON.parse(localStorage.getItem('viewedPets') || '[]');
+    
+    // Aynı ilan listede varsa eskisini çıkarıp en başa ekleyelim
+    const filtered = storedViewed.filter(item => {
+      const itemId = typeof item === 'string' ? item : (item._id || item.id);
+      return itemId !== petId;
+    });
+
+    const updatedViewed = [pet, ...filtered].slice(0, 20); // Son 20 ilanı detay objesiyle saklayalım
+    localStorage.setItem('viewedPets', JSON.stringify(updatedViewed));
   };
 
   const toggleDropdown = (name) => {
@@ -278,7 +332,7 @@ const [selectedPet, setSelectedPet] = useState(null);
               )}
             </div>
 
-            {/*Dropdown: By gender */}
+            {/* Dropdown: By gender */}
             <div className={styles.customDropdown}>
               <div 
                 className={`${styles.dropdownTrigger} ${openDropdown === 'gender' ? styles.dropdownTriggerActive : ''}`} 
@@ -332,7 +386,7 @@ const [selectedPet, setSelectedPet] = useState(null);
               )}
             </div>
 
-            {/*  Konum Girişi*/}
+            {/* Konum Girişi */}
             <div className={styles.locationWrapper}>
               <div className={`${styles.inputFieldBox} ${openDropdown === 'location' || location ? styles.inputFieldBoxActive : ''}`} onClick={() => toggleDropdown('location')}>
                 <input
@@ -352,7 +406,7 @@ const [selectedPet, setSelectedPet] = useState(null);
                       type="button" 
                       className={styles.clearBtn} 
                       onClick={(e) => {
-                        e.stopPropagation(); // Menünün tekrardan tetiklenmesini engeller
+                        e.stopPropagation();
                         setLocation('');
                         setCurrentPage(1);
                       }}
@@ -406,15 +460,18 @@ const [selectedPet, setSelectedPet] = useState(null);
         {isLoading && <p>Loading pets...</p>}
         {error && <p className={styles.error}>Error: {error}</p>}
 
-        {/*  İlan Kartları */}
+        {/* İlan Kartları */}
         {!isLoading && (
           <div className={styles.petGrid}>
             {notices && notices.length > 0 ? (
-                          notices.map((pet) => {
-              const imageSource = pet.imgURL || pet.imgUrl || pet.imageUrl || pet.image || pet.avatar || FALLBACK_IMAGE;
+              notices.map((pet) => {
+                const imageSource = pet.imgURL || pet.imgUrl || pet.imageUrl || pet.image || pet.avatar || FALLBACK_IMAGE;
+                const petId = pet._id || pet.id;
+                
+                const isFavorite = favoriteIds.some((fav) => String(fav?._id || fav?.id || fav) === String(petId));
 
                 return (
-                  <article key={pet._id || pet.id} className={styles.petCard}>
+                  <article key={petId} className={styles.petCard}>
                     <div className={styles.imageWrapper}>
                       <img 
                         src={imageSource} 
@@ -464,17 +521,22 @@ const [selectedPet, setSelectedPet] = useState(null);
                     {/* Alt Butonlar */}
                     <div className={styles.cardActions}>
                       <button 
-  className={styles.learnMoreBtn} 
-  onClick={() => handleProtectedAction(() => setSelectedPet(pet))}
->
-  Learn more
-</button>
+                        className={styles.learnMoreBtn} 
+                        onClick={() => handleProtectedAction(() => handleOpenDetails(pet))}
+                      >
+                        Learn more
+                      </button>
                       <button 
-  className={styles.favoriteBtn} 
-  onClick={() => handleProtectedAction(() => console.log("Favori işlemi"))}
->
-  <img src={heartIcon} alt="heart" />
-</button>
+                        className={`${styles.favoriteBtn} ${isFavorite ? styles.favoriteActive : ''}`} 
+                        onClick={() => handleToggleFavorite(petId)}
+                        style={isFavorite ? { backgroundColor: '#fdb022' } : {}}
+                      >
+                        <img 
+                          src={heartIcon} 
+                          alt="heart" 
+                          style={isFavorite ? { filter: 'brightness(0) invert(1)' } : {}} 
+                        />
+                      </button>
                     </div>
                   </article>
                 );
@@ -485,7 +547,7 @@ const [selectedPet, setSelectedPet] = useState(null);
           </div>
         )}
 
-        {/* Sayfalama (Artık totalPages kullanıldığı için ESLint hatası vermez) */}
+        {/* Sayfalama */}
         {!isLoading && totalPages > 1 && (
           <div className={styles.paginationContainer}>
             <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1} className={styles.pageButton}>«</button>
@@ -496,13 +558,19 @@ const [selectedPet, setSelectedPet] = useState(null);
           </div>
         )}
         {selectedPet && (
-  <PetDetailsModal 
-    pet={selectedPet} 
-    onClose={() => setSelectedPet(null)} 
+          <PetDetailsModal 
+            pet={selectedPet} 
+            onClose={() => setSelectedPet(null)}
+            onToggleFavorite={handleToggleFavorite}
+            favoriteIds={favoriteIds}
           /> 
         )}
         {isAuthModalOpen && (
           <AuthAttentionModal onClose={() => setIsAuthModalOpen(false)} />
+        )}
+
+        {isCongratsModalOpen && (
+          <CongratsModal onClose={() => setIsCongratsModalOpen(false)} />
         )}
       </div>
     </div>

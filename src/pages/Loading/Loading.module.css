@@ -28,7 +28,6 @@
 
 .heart {
     color: var(--color-primary);
-    /* Global CSS'teki sarı değişkenin */
     margin: 0 2px;
 }
 
@@ -46,7 +45,6 @@
     width: 100%;
     height: 100%;
     transform: rotate(-90deg);
-    /* İlerlemenin yukarıdan başlaması için */
 }
 
 .progressText {

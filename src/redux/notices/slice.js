@@ -17,12 +17,10 @@ const noticesSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-
       .addCase(fetchNotices.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-
 
       .addCase(fetchNotices.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -46,7 +44,6 @@ const noticesSlice = createSlice({
           data.total ||
           0;
       })
-
 
       .addCase(fetchNotices.rejected, (state, action) => {
         state.isLoading = false;

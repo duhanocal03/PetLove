@@ -1,14 +1,10 @@
 .authSectionContainer {
     position: relative;
-    /* Kartı içeride absolute konumlandırmak için şart */
     width: 100%;
     height: 100%;
     min-height: 650px;
-    /* Tasarımdaki dikey yüksekliği korumak için */
     background-color: #F6B83D;
-    /* Ana sarı renk */
     border-radius: 60px;
-    /* Tasarımdaki oval köşeler */
     overflow: hidden;
     display: flex;
     align-items: flex-end;
@@ -31,26 +27,21 @@
     border-radius: 20px;
     padding: 16px;
     max-width: 294px;
-    /* Kartın tasarımdaki genişliği */
     display: flex;
     gap: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-    /* Hafif gölge */
     z-index: 5;
 }
 
-/* Emojinin Arkasındaki Açık Krem Daire */
 .avatarWrapper {
     width: 60px;
     height: 60px;
     background-color: #FFF4DF;
-    /* Tasarımdaki yumuşak krem rengi */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    /* Dairenin ezilmesini önler */
 }
 
 .avatarIcon {
@@ -65,19 +56,16 @@
     gap: 8px;
 }
 
-/* İsim ve Doğum Gününü Yan Yana Hizalayan Alan */
 .cardHeader {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    /* Yazı taban çizgisine göre hizalar */
 }
 
 .petName {
     font-size: 16px;
     font-weight: 700;
     color: #F6B83D;
-    /* Rich ismi sarı */
     margin: 0;
 }
 
@@ -85,13 +73,11 @@
     font-size: 12px;
     font-weight: 500;
     color: #262626;
-    /* Tarih rengi net */
     margin: 0;
 }
 
 .label {
     color: rgba(38, 38, 38, 0.5);
-    /* "Birthday:" yazısı soluk gri */
     font-weight: 400;
 }
 

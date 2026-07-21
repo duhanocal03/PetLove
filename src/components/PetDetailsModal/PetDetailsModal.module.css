@@ -31,7 +31,6 @@
     cursor: pointer;
 }
 
-/* Resim ve Rozet */
 .imageWrapper {
     position: relative;
     width: 200px;
@@ -56,7 +55,6 @@
     font-weight: bold;
 }
 
-/* Bilgiler Yan Yana */
 .infoRow {
     display: flex;
     justify-content: space-between;
@@ -85,7 +83,6 @@
     margin: 20px 0;
 }
 
-/* Butonlar */
 .actions {
     display: flex;
     gap: 10px;
