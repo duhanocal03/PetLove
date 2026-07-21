@@ -1,13 +1,14 @@
+/* ==========================================
+   DESKTOP (VARSAYILAN STİLLER - >= 1280px)
+   ========================================== */
+
 .pageContainer {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: #f9f9f9;
-    /* Tasarımdaki kırık beyaz tonu */
     max-width: 1440px;
-    /* Sayfanın sağa sola aşırı yayılmasını önler */
     margin: 0 auto;
-    /* Sayfayı büyük ekranlarda ortalar */
     width: 100%;
 }
 
@@ -17,22 +18,18 @@
     padding: 0 32px 32px 32px;
     gap: 32px;
     align-items: stretch;
-    /* İki kolonun yüksekliğini eşitler */
 }
 
 .leftColumn {
     flex: 1;
     max-width: 600px;
-    /* Sol sarı alanın çok devasa olmasını engeller */
     display: flex;
 }
 
 .rightColumn {
     flex: 1.2;
-    /* Form alanına biraz daha ferah bir genişlik veriyoruz */
     background-color: var(--color-white);
     border-radius: 60px;
-    /* Tasarımdaki gibi çok daha yuvarlak köşeler */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,12 +39,10 @@
 .formContainer {
     width: 100%;
     max-width: 424px;
-    /* Form elemanlarının genişliği */
 }
 
 .formTitle {
     font-size: 54px;
-    /* Tasarımdaki gibi büyük ve vurucu */
     font-weight: 700;
     color: #262626;
     margin-bottom: 16px;
@@ -70,7 +65,6 @@
 
 .inputWrapper {
     position: relative;
-    /* Göz ikonunu içeride tutmak için şart */
     width: 100%;
 }
 
@@ -84,13 +78,13 @@
     outline: none;
     background-color: transparent;
     transition: border-color 0.3s ease;
+    box-sizing: border-box;
 }
 
 .inputField:focus {
     border-color: var(--color-primary);
 }
 
-/* Göz İkonunun Tasarımdaki Gibi Tam İçeride Ortalanması */
 .eyeButton {
     position: absolute;
     right: 24px;
@@ -122,6 +116,12 @@
     text-transform: uppercase;
     margin-top: 24px;
     letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.submitBtn:hover {
+    opacity: 0.9;
 }
 
 .switchPageText {
@@ -139,30 +139,27 @@
 
 .errorInput {
     border-color: #EF2443 !important;
-    /* Tasarımdaki kırmızı tonu */
 }
 
 .successInput {
     border-color: #08AA7C !important;
-    /* Tasarımdaki yeşil tonu */
 }
 
 .statusIcon {
     position: absolute;
     right: 24px;
-    top: 24px;
-    /* İnput padding'ine göre ortalama */
+    top: 50%;
+    transform: translateY(-50%);
     width: 18px;
     height: 18px;
     pointer-events: none;
-    /* Tıklamayı engellemek için */
 }
 
 .statusIconWithEye {
     position: absolute;
     right: 56px;
-    /* Göz ikonuna çarpmaması için sola kaydırdık */
-    top: 24px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 18px;
     height: 18px;
     pointer-events: none;
@@ -175,4 +172,117 @@
     margin-left: 16px;
     font-weight: 500;
     text-align: left;
+}
+
+
+/* ==========================================
+   TABLET BÖLÜMÜ (768px - 1279px)
+   ========================================== */
+@media screen and (max-width: 1279px) {
+    .contentWrapper {
+        flex-direction: column;
+        padding: 0 32px 32px 32px;
+        gap: 24px;
+    }
+
+    .leftColumn {
+        max-width: 100%;
+        width: 100%;
+        height: 360px;
+    }
+
+    .rightColumn {
+        width: 100%;
+        border-radius: 30px;
+        padding: 40px 32px;
+    }
+
+    .formContainer {
+        max-width: 100%;
+    }
+
+    .formTitle {
+        font-size: 40px;
+    }
+}
+
+
+/* ==========================================
+   MOBİL BÖLÜMÜ (< 767px)
+   ========================================== */
+@media screen and (max-width: 767px) {
+    .contentWrapper {
+        flex-direction: column;
+        padding: 0 20px 20px 20px;
+        gap: 12px;
+    }
+
+    /* Üst Görsel Bloğu */
+    .leftColumn {
+        max-width: 100%;
+        width: 100%;
+        height: 280px;
+        border-radius: 30px;
+        overflow: hidden;
+    }
+
+    /* Alt Form Bloğu */
+    .rightColumn {
+        width: 100%;
+        border-radius: 30px;
+        padding: 32px 20px;
+    }
+
+    .formContainer {
+        max-width: 100%;
+    }
+
+    .formTitle {
+        font-size: 28px;
+        margin-bottom: 12px;
+        letter-spacing: -0.5px;
+    }
+
+    .formSubtitle {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .mainForm {
+        gap: 10px;
+    }
+
+    .inputField {
+        padding: 14px 18px;
+        font-size: 14px;
+        border-radius: 30px;
+    }
+
+    .eyeButton {
+        right: 18px;
+    }
+
+    .eyeButton img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .statusIcon {
+        right: 18px;
+    }
+
+    .statusIconWithEye {
+        right: 44px;
+    }
+
+    .submitBtn {
+        padding: 14px;
+        font-size: 14px;
+        margin-top: 14px;
+    }
+
+    .switchPageText {
+        margin-top: 16px;
+        font-size: 12px;
+    }
 }
