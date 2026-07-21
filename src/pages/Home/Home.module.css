@@ -1,3 +1,7 @@
+/* ==========================================
+   DESKTOP (VARSAYILAN STİLLER - >= 1280px)
+   ========================================== */
+
 .homeContainer {
     display: flex;
     flex-direction: column;
@@ -65,4 +69,91 @@
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+
+/* ==========================================
+   TABLET BÖLÜMÜ (768px - 1279px)
+   ========================================== */
+@media screen and (max-width: 1279px) {
+    .homeContainer {
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .yellowCard {
+        padding: 24px 32px 64px 32px;
+        border-radius: 40px;
+        gap: 48px;
+    }
+
+    .mainContentRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .textSection,
+    .subtitleSection {
+        max-width: 100%;
+    }
+
+    .mainTitle {
+        font-size: 64px;
+        letter-spacing: -2px;
+    }
+
+    .imageWrapper {
+        border-radius: 40px;
+        height: 400px;
+    }
+}
+
+
+/* ==========================================
+   MOBİL BÖLÜMÜ (< 767px - TASARIMA BİREBİR UYGUN)
+   ========================================== */
+@media screen and (max-width: 767px) {
+    .homeContainer {
+        padding: 0 20px 20px 20px;
+        gap: 10px;
+    }
+
+    .yellowCard {
+        border-radius: 30px;
+        padding: 0 20px 40px 20px;
+        gap: 40px;
+    }
+
+    .mainContentRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .textSection,
+    .subtitleSection {
+        max-width: 100%;
+    }
+
+    .mainTitle {
+        font-size: 50px;
+        line-height: 0.95;
+        letter-spacing: -1.5px;
+    }
+
+    .subtitleText {
+        font-size: 14px;
+        line-height: 1.35;
+        opacity: 0.95;
+    }
+
+    .imageWrapper {
+        border-radius: 30px;
+        height: 390px;
+    }
+
+    .heroImage {
+        object-position: top center;
+    }
 }
