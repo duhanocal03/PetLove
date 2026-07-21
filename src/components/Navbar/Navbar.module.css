@@ -17,7 +17,6 @@
     padding: 20px 0;
 }
 
-/* Logo */
 .logoWrapper {
     display: flex;
     align-items: center;
@@ -31,7 +30,6 @@
     display: block;
 }
 
-/* Masaüstü Orta Navigasyon Menüsü */
 .navigationMenu {
     display: flex;
     gap: 6px;
@@ -69,7 +67,6 @@
     color: #FFFFFF !important;
 }
 
-/* Sağ Kontrol Grubu (AuthNav + Hamburger) */
 .rightControlGroup {
     display: flex;
     align-items: center;
@@ -81,7 +78,6 @@
     align-items: center;
 }
 
-/* Hamburger Buton (Masaüstünde Gizli) */
 .burgerBtn {
     display: none;
     background: none;
@@ -111,7 +107,6 @@
         display: none;
     }
 
-    /* Hamburger butonunu görünür yap */
     .burgerBtn {
         display: flex;
     }
@@ -120,7 +115,6 @@
         display: flex;
     }
 
-    /* AÇILIR MENÜ OVERLAY */
     .mobileMenuOverlay {
         position: fixed;
         top: 0;
@@ -196,7 +190,7 @@
     .rightControlGroup {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 8px;
     }
 
     .rightSection {
@@ -204,30 +198,39 @@
         align-items: center;
     }
 
-    /* Mobilde sadece avatar kalacak şekilde Log Out ve ismi gizle */
+    .rightSection a,
     .rightSection button,
     .rightSection p,
     .rightSection span {
         display: none !important;
     }
 
-    /* avatar simgesi */
     .rightSection [class*="userAvatar"],
-    .rightSection [class*="avatar"] {
+    .rightSection [class*="avatar"],
+    .rightSection [class*="userIcon"],
+    .rightSection [class*="userBar"] a[href*="profile"],
+    .rightSection [class*="userNav"] a[href*="profile"] {
         display: flex !important;
         width: 40px;
         height: 40px;
+        align-items: center;
+        justify-content: center;
     }
 
-    /* Hamburger içi Auth alanı ve butonları */
     .mobileOnlyAuth {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
         margin-top: auto;
         padding-top: 20px;
+        width: 100%;
     }
 
-    .mobileOnlyAuth button {
+    .mobileOnlyAuth a,
+    .mobileOnlyAuth button,
+    .mobileOnlyAuth p,
+    .mobileOnlyAuth span {
         display: flex !important;
     }
 
